@@ -23,13 +23,13 @@
         <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1" CornerRadius="10" Margin="10" DataContext="{Binding CreateViewModel,Mode=OneTime}">
             <StackPanel Margin="10">
                 <TextBlock>Name:</TextBlock>
-                <TextBox x:Name="NameIn"></TextBox>
+                <TextBox Text="{Binding Name ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 <TextBlock>Category:</TextBlock>
-                <TextBox x:Name="CateIn"></TextBox>
+                <TextBox Text="{Binding Category ,Mode =TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 <TextBlock>Price:</TextBlock>
-                <TextBox x:Name="PriceIn"></TextBox>
+                <TextBox  Text="{Binding Price,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ></TextBox>
                 <TextBlock/>
-                <Button x:Name="Create" Width="100" Height = "30" HorizontalAlignment="Right" >Create</Button>
+                <Button Width="100" Height = "30" HorizontalAlignment="Right" Command="{Binding ClickCommand,Mode=OneTime}" >Create</Button>
             </StackPanel>
 
         </Border>

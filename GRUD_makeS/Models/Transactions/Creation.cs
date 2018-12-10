@@ -23,9 +23,14 @@ namespace GRUD_makeS.Models.Transactions
         }
 
 
-        public void Execute ()
+        public void Execute(string name,string category ,int price)
         {
-            var productinfo = new ProductInfo();
+            var productinfo = new ProductInfo
+            {
+                Name = name,
+                Category = category,
+                Price = price
+            };
 
             productInfoDb.Add(productinfo);
 
