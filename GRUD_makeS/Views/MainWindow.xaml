@@ -20,7 +20,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1" CornerRadius="10" Margin="10">
+        <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1" CornerRadius="10" Margin="10" DataContext="{Binding CreateViewModel,Mode=OneTime}">
             <StackPanel Margin="10">
                 <TextBlock>Name:</TextBlock>
                 <TextBox x:Name="NameIn"></TextBox>
@@ -34,7 +34,7 @@
 
         </Border>
 
-        <DataGrid x:Name="dataGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False">
+        <DataGrid x:Name="dataGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" DataContext="{Binding DataViewModel,Mode=OneTime}" >
             <DataGrid.Columns>
                 <DataGridTextColumn Binding ="{Binding Path = ID}" Header="ID" IsReadOnly="True" ></DataGridTextColumn>
                 <DataGridTextColumn Binding ="{Binding Path = Name}" Header="Name" IsReadOnly="True"></DataGridTextColumn>

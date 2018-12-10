@@ -11,8 +11,12 @@ namespace GRUD_makeS.Models.Transactions
     class Creation
     {
 
+        private readonly ProductInfoDb productInfoDb;
+
+
         public Creation(ProductInfoDb productInfoDb)
         {
+            this.productInfoDb = productInfoDb;
             
 
 
@@ -21,7 +25,9 @@ namespace GRUD_makeS.Models.Transactions
 
         public void Execute ()
         {
+            var productinfo = new ProductInfo();
 
+            productInfoDb.Add(productinfo);
 
         }
 

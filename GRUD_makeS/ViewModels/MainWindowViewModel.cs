@@ -10,8 +10,12 @@ namespace GRUD_makeS.ViewModels
     {
         public MainWindowViewModel()
         {
-
+            CreateViewModel = new CreateViewModel();
+            DataGridViewModel = new DataGridViewModel();
         }
 
+        public CreateViewModel CreateViewModel { get; }
+        public DataGridViewModel DataGridViewModel { get; }
+     
     }
 }
