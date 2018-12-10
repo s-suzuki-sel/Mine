@@ -77,15 +77,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="EditInput.xaml.cs">
+    <Compile Include="Views\EditInput.xaml.cs">
       <DependentUpon>EditInput.xaml</DependentUpon>
     </Compile>
-    <Compile Include="x.cs" />
-    <Page Include="EditInput.xaml">
+    <Compile Include="Models\Data\ProductInfo.cs" />
+    <Page Include="Views\EditInput.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -93,12 +93,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Data\ProductInfoDb.cs" />
+    <Compile Include="Models\Transactions\Creation.cs" />
+    <Compile Include="Models\Transactions\Deleting.cs" />
+    <Compile Include="Models\Transactions\Reading.cs" />
+    <Compile Include="Models\Transactions\Updating.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -124,6 +129,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

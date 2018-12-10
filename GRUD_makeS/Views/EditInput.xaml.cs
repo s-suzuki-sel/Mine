@@ -18,7 +18,7 @@ using Microsoft.Win32;
 
 
 
-namespace GRUD_makeS
+namespace GRUD_makeS.Views
 {
     /// <summary>
     /// EditInput.xaml の相互作用ロジック
