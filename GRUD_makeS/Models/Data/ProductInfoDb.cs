@@ -27,14 +27,14 @@ namespace GRUD_makeS.Models.Data
         public void Add(ProductInfo productInfo)
         {
             productInfos.Add(productInfo);
-
+            AddChaged?.Invoke(this, EventArgs.Empty);
         }
 
 
         public void Remove(ProductInfo productInfo)
         {
             productInfos.Remove(productInfo);
-
+            RemoveChaged?.Invoke(this, EventArgs.Empty);
         }
 
         public void Update(ProductInfo productInfo)
@@ -45,8 +45,14 @@ namespace GRUD_makeS.Models.Data
             found.Name = productInfo.Name;
             found.Category = productInfo.Category;
             found.Price = productInfo.Price;
+
+            UpdateChaged?.Invoke(this, EventArgs.Empty);
         }
+        /* イベントのネーミングルールは時制句を入れる(ed,ing) */
+        public event EventHandler AddChaged;
 
+        public event EventHandler RemoveChaged;
 
+        public event EventHandler UpdateChaged;
     }
 }

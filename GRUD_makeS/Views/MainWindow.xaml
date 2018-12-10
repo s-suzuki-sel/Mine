@@ -34,17 +34,18 @@
 
         </Border>
 
-        <DataGrid x:Name="dataGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" DataContext="{Binding DataViewModel,Mode=OneTime}" >
+        <DataGrid x:Name="dataGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" 
+                  DataContext="{Binding DataGridViewModel,Mode=OneTime}" ItemsSource="{Binding ProductInfoViewModels,Mode=OneWay}" >
             <DataGrid.Columns>
-                <DataGridTextColumn Binding ="{Binding Path = ID}" Header="ID" IsReadOnly="True" ></DataGridTextColumn>
-                <DataGridTextColumn Binding ="{Binding Path = Name}" Header="Name" IsReadOnly="True"></DataGridTextColumn>
-                <DataGridTextColumn Binding ="{Binding Path = Category}" Header="Category" IsReadOnly="True" ></DataGridTextColumn>
-                <DataGridTextColumn Binding ="{Binding Path = Price}" Header="Price" IsReadOnly="True" ></DataGridTextColumn>
+                <DataGridTextColumn Binding ="{Binding Id,Mode=OneTime}" Header="ID" IsReadOnly="True" ></DataGridTextColumn>
+                <DataGridTextColumn Binding ="{Binding Name,Mode=OneWay}" Header="Name" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn Binding ="{Binding Category,Mode=OneWay}" Header="Category" IsReadOnly="True" ></DataGridTextColumn>
+                <DataGridTextColumn Binding ="{Binding Price,Mode=OneWay}" Header="Price" IsReadOnly="True" ></DataGridTextColumn>
                 
                 <DataGridTemplateColumn Header="Edit">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Edit" Tag="{Binding}" IsEnabled="{Binding Actionable}"  />
+                            <Button Content="Edit" Command="{Binding EditCommand,Mode=OneTime}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -52,7 +53,7 @@
                 <DataGridTemplateColumn Header="Delete">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Delete" Tag="{Binding}" IsEnabled="{Binding Actionable}" />
+                            <Button Content="Delete" Command="{Binding DeleteCommand,Mode=OneTime}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

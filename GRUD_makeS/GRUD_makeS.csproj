@@ -81,6 +81,7 @@
     <Compile Include="ViewModels\DataGridViewModel.cs" />
     <Compile Include="ViewModels\EditInputViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\ProductInfoViewModel.cs" />
     <Compile Include="Views\EditInput.xaml.cs">
       <DependentUpon>EditInput.xaml</DependentUpon>
     </Compile>
