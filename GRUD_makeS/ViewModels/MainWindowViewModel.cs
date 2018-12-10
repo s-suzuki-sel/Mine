@@ -8,5 +8,10 @@ namespace GRUD_makeS.ViewModels
 {
     class MainWindowViewModel
     {
+        public MainWindowViewModel()
+        {
+
+        }
+
     }
 }

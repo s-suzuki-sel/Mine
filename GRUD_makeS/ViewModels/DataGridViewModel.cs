@@ -8,5 +8,6 @@ namespace GRUD_makeS.ViewModels
 {
     class DataGridViewModel
     {
+
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GRUD_makeS.ViewModels
 {
-    class EditWindowViewModel
+    class EditInputViewModel
     {
     }
 }

@@ -4,8 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GRUD_makeS"
+        xmlns:vm="clr-namespace:GRUD_makeS.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:MainWindowViewModel></vm:MainWindowViewModel>
+    </Window.DataContext>
+    
+    
+    
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -21,7 +29,7 @@
                 <TextBlock>Price:</TextBlock>
                 <TextBox x:Name="PriceIn"></TextBox>
                 <TextBlock/>
-                <Button x:Name="Create" Width="100" Height = "30" HorizontalAlignment="Right" Click="Create_Click" >Create</Button>
+                <Button x:Name="Create" Width="100" Height = "30" HorizontalAlignment="Right" >Create</Button>
             </StackPanel>
 
         </Border>
@@ -36,7 +44,7 @@
                 <DataGridTemplateColumn Header="Edit">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Edit" Tag="{Binding}" IsEnabled="{Binding Actionable}" Click="Edit_Click" />
+                            <Button Content="Edit" Tag="{Binding}" IsEnabled="{Binding Actionable}"  />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -44,7 +52,7 @@
                 <DataGridTemplateColumn Header="Delete">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Delete" Tag="{Binding}" IsEnabled="{Binding Actionable}" Click="Delete_Click" />
+                            <Button Content="Delete" Tag="{Binding}" IsEnabled="{Binding Actionable}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
