@@ -14,10 +14,17 @@ namespace GRUD_makeS.Models.Transactions
         private readonly ProductInfoDb productInfoDb;
 
 
-        public Creation(ProductInfoDb productInfoDb)
+        private Creation(ProductInfoDb productInfoDb)
         {
             this.productInfoDb = productInfoDb;
             
+
+
+        }
+        /* thisは別のコンストラクタを呼び出す */
+        public Creation()
+            :this(ProductInfoDb.Default)
+        {
 
 
         }

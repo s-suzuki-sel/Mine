@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Prism.Mvvm;
 using Prism.Commands;
 using GRUD_makeS.Models.Transactions;
-using GRUD_makeS.Models.Data;
 
 
 namespace GRUD_makeS.ViewModels
@@ -23,7 +22,8 @@ namespace GRUD_makeS.ViewModels
             Price = 100;
             ClickCommand = new DelegateCommand(() =>
             {
-                var creation = new Creation(new ProductInfoDb());
+
+                var creation = new Creation();
                 creation.Execute(Name, Category, Price);
             });
 

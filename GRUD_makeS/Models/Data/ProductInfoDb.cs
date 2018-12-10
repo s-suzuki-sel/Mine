@@ -8,6 +8,8 @@ namespace GRUD_makeS.Models.Data
 {
     class ProductInfoDb
     {
+        /* staticなプロパティでインラインで初期化するとほぼsingletonとなる */
+        public static ProductInfoDb Default { get; } = new ProductInfoDb();
 
         /* フィールドの時はスモールキャメル派とアンスコ派がいるがSE研はスモールキャメル */
 
