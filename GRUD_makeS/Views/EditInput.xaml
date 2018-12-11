@@ -7,21 +7,19 @@
         xmlns:vm="clr-namespace:GRUD_makeS.ViewModels"
         mc:Ignorable="d"
         Title="EditInput" Width="300" Height="220">
-    <Window.DataContext>
-        <vm:EditInputViewModel></vm:EditInputViewModel>
-    </Window.DataContext>
+
 
     <Grid>
         <StackPanel Margin="10">
             <TextBlock>Name:</TextBlock>
-            <TextBox x:Name="SNameIn" ></TextBox>
+            <TextBox  Text="{Binding Name,Mode=TwoWay}" ></TextBox>
             <TextBlock>Category:</TextBlock>
-            <TextBox x:Name="SCateIn"></TextBox>
+            <TextBox Text="{Binding Category,Mode=TwoWay}"></TextBox>
             <TextBlock>Price:</TextBlock>
-            <TextBox x:Name="SPriceIn"></TextBox>
+            <TextBox Text="{Binding Price,Mode=TwoWay}"></TextBox>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
-                <Button x:Name="OK" Width="50" Height = "20"  Margin="10" >OK</Button>
-            <Button x:Name="Cancel" Width="50" Height = "20"  >Cancel</Button>
+                <Button Width="50" Height = "20"  Margin="10" Command="{Binding OkCommand,Mode=OneTime}" >OK</Button>
+            <Button  Width="50" Height = "20" Command="{Binding CancelCommand,Mode=OneTime}" >Cancel</Button>
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -38,6 +38,17 @@ namespace GRUD_makeS.ViewModels
 
             };
 
+            productInfoDb.UpdateChaged += (s, e) =>
+            {
+                var updated = e.ProductInfo;
+                var updatedId = updated.Id;
+                var found = ProductInfoViewModels.First(x => x.Id == updatedId);
+                found.Name = updated.Name;
+                found.Category = updated.Category;
+                found.Price = updated.Price;
+
+            };
+
 
         }
     }

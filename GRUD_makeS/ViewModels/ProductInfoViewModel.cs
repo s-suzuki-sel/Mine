@@ -21,7 +21,17 @@ namespace GRUD_makeS.ViewModels
             this.Category = productInfo.Category;
             this.Price = productInfo.Price;
 
-            this.EditCommand = new DelegateCommand(()=> { });
+            this.EditCommand = new DelegateCommand(()=> 
+            {
+                /*xamlには引数ありでdatacontextをかけないのでコードで書く*/
+                var vm = new EditInputViewModel(productInfo);
+                var editInput = new GRUD_makeS.Views.EditInput();
+                editInput.DataContext=vm;
+                editInput.ShowDialog();
+
+
+
+            });
             this.DeleteCommand = new DelegateCommand(() => 
             {
                 var deleteing = new Deleting();

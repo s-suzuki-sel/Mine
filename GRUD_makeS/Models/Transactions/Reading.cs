@@ -10,12 +10,16 @@ namespace GRUD_makeS.Models.Transactions
     class Reading
     {
 
+        public readonly ProductInfoDb productInfoDb;
+
         public Reading(ProductInfoDb productInfoDb)
         {
 
 
 
         }
+
+        
 
 
         public void Execute()

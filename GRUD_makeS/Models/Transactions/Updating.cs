@@ -10,17 +10,26 @@ namespace GRUD_makeS.Models.Transactions
     class Updating
     {
 
+        public readonly ProductInfoDb productInfoDb;
+
         public Updating(ProductInfoDb productInfoDb)
         {
+            this.productInfoDb = productInfoDb;
 
 
+        }
+        public Updating()
+            : this(ProductInfoDb.Default)
+        {
 
+           
         }
 
 
 
-        public void Execute()
+        public void Execute(int id ,string name,string category,int price)
         {
+            productInfoDb.Update(id, name, category, price);
 
 
         }

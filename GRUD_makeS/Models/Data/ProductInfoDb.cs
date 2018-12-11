@@ -46,6 +46,21 @@ namespace GRUD_makeS.Models.Data
         }
 
 
+        public void Update(int id, string name, string category, int price)
+        {
+
+            /* class は参照型(Cでいうポインタ的な)なのでプロパティで書けば変更される　　値型(struct)だとコピーにいれちゃうのでできない */
+            var productInfo = new ProductInfo
+            {
+                Id = id,
+                Name = name,
+                Category = category,
+                Price = price
+            };
+
+            Update(productInfo);
+        }
+
 
         public void Update(ProductInfo productInfo)
         {
