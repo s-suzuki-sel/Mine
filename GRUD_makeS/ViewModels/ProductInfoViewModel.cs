@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Prism.Commands;
 using Prism.Mvvm;
 using GRUD_makeS.Models.Data;
+using GRUD_makeS.Models.Transactions;
 
 
 
@@ -20,7 +21,13 @@ namespace GRUD_makeS.ViewModels
             this.Category = productInfo.Category;
             this.Price = productInfo.Price;
 
+            this.EditCommand = new DelegateCommand(()=> { });
+            this.DeleteCommand = new DelegateCommand(() => 
+            {
+                var deleteing = new Deleting();
+                deleteing.Execute(Id);
 
+            });
         }
 
         private string name;

@@ -10,18 +10,27 @@ namespace GRUD_makeS.Models.Transactions
 {
     class Deleting
     {
+
+        private readonly ProductInfoDb productInfoDb; 
+
         public Deleting(ProductInfoDb productInfoDb)
         {
+            this.productInfoDb = productInfoDb;
 
 
+        }
+        public Deleting()
+            :this(ProductInfoDb.Default)
+        {
 
         }
 
 
-
-        public void Execute()
+        public void Execute(int id)
         {
+            
 
+            productInfoDb.Remove(id);
 
         }
 

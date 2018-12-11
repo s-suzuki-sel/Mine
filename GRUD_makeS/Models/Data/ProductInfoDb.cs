@@ -27,15 +27,25 @@ namespace GRUD_makeS.Models.Data
         public void Add(ProductInfo productInfo)
         {
             productInfos.Add(productInfo);
-            AddChaged?.Invoke(this, EventArgs.Empty);
+            var e = new DbChangedEventArgs(productInfo);
+            AddChaged?.Invoke(this, e);
         }
 
 
         public void Remove(ProductInfo productInfo)
         {
             productInfos.Remove(productInfo);
-            RemoveChaged?.Invoke(this, EventArgs.Empty);
+            var e = new DbChangedEventArgs(productInfo);
+            RemoveChaged?.Invoke(this, e);
         }
+
+        public void Remove(int id)
+        {
+            var removeData = this.ProductInfos.First(x => x.Id == id);
+            Remove(removeData);
+        }
+
+
 
         public void Update(ProductInfo productInfo)
         {
@@ -46,13 +56,14 @@ namespace GRUD_makeS.Models.Data
             found.Category = productInfo.Category;
             found.Price = productInfo.Price;
 
-            UpdateChaged?.Invoke(this, EventArgs.Empty);
+            var e = new DbChangedEventArgs(found);
+            UpdateChaged?.Invoke(this, e);
         }
         /* イベントのネーミングルールは時制句を入れる(ed,ing) */
-        public event EventHandler AddChaged;
+        public event EventHandler<DbChangedEventArgs> AddChaged;
 
-        public event EventHandler RemoveChaged;
+        public event EventHandler<DbChangedEventArgs>  RemoveChaged;
 
-        public event EventHandler UpdateChaged;
+        public event EventHandler<DbChangedEventArgs> UpdateChaged;
     }
 }

@@ -20,13 +20,23 @@ namespace GRUD_makeS.ViewModels
 
             productInfoDb.AddChaged += (s, e) =>
             {
-                var added =  productInfoDb.ProductInfos.Last();
+                /* lastだとVMがDBを読む方法を知っているのでよくない */
+                var added =  e.ProductInfo;
                 var vm = new ProductInfoViewModel(added);
 
                 ProductInfoViewModels.Add(vm);
 
             };
 
+            productInfoDb.RemoveChaged += (s, e) =>
+            {
+                var removed = e.ProductInfo;
+                var removedId = removed.Id;
+                var found = ProductInfoViewModels.First(x => x.Id == removedId);
+                ProductInfoViewModels.Remove(found);
+
+
+            };
 
 
         }

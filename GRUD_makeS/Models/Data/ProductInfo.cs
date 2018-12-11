@@ -10,7 +10,8 @@ namespace GRUD_makeS.Models.Data
     // DataGridに表示するデータ
     public class ProductInfo
     {
-        public int Id { get; set; }
+        private static int id;
+        public int Id { get; } = id++;
         public string Name { get; set; }
         public string Category { get; set; }
         public int Price { get; set; }
