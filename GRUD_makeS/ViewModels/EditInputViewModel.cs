@@ -8,64 +8,75 @@ using Prism.Commands;
 using GRUD_makeS.Models.Data;
 using GRUD_makeS.Models.Transactions;
 using GRUD_makeS.Views;
-
+/* 主にReactiveProptyはviewModelで使う */
+using System.Reactive;
+using System.Reactive.Linq;
+using Reactive.Bindings.Binding;
+using Reactive.Bindings.Extensions;
+using Reactive.Bindings;
 
 namespace GRUD_makeS.ViewModels
 {
-    class EditInputViewModel :BindableBase
+    class EditInputViewModel 
     {
         
 
         public EditInputViewModel(ProductInfo productInfo)
         {
-            Name = productInfo.Name;
-            Category = productInfo.Category;
-            Price = productInfo.Price;
 
-            OkCommand = new DelegateCommand(() =>
+            Name = new ReactiveProperty<string>(productInfo.Name);
+            Category = new ReactiveProperty<string>(productInfo.Category);
+            Price = new ReactiveProperty<string>(productInfo.Price.ToString());
+
+
+
+
+
+            OkCommand = new[]
             {
-                var updating = new Updating();
-                updating.Execute(productInfo.Id, Name, Category, Price);
+                Name.Select(x => !string.IsNullOrEmpty(x)),
+                Category.Select(x => !string.IsNullOrEmpty(x)),
+                Price.Select(x => int.TryParse(x, out var _))
+            }
+            .CombineLatestValuesAreAllTrue()
+            .ToReactiveCommand();
+
+            OkCommand.Subscribe(() =>
+           {
+               var updating = new Updating();
+               updating.Execute(productInfo.Id, Name.Value, Category.Value, int.Parse(Price.Value));
 
 
                 /* 動作は同じなのでExcuteでCancelCommandを呼び出す */
-                this.CancelCommand.Execute();
-            });
+               this.CancelCommand.Execute();
+           });
 
-            CancelCommand = new DelegateCommand(() =>
+            CancelCommand = new ReactiveCommand();
+
+            CancelCommand.Subscribe(() =>
             {
                 /* AppXaml                        thisで自分を所有しているwindowを探せる */
                 var editWindow = App.Current.Windows.OfType<EditInput>().First(x => x.DataContext == this);
                 editWindow.Close();
+
             });
 
-        }
+           
 
-        private string name;
-        private string category;
-        private int price;
+            Name.Subscribe(i => Console.WriteLine(i));
 
-        public string Name
-        {
-            get => name;
-            set => SetProperty(ref name, value);
-        }
+            Category.Subscribe(i => Console.WriteLine(i));
+            Price.Subscribe(i => Console.WriteLine(i));
 
-        public string Category
-        {
-            get => category;
-            set => SetProperty(ref category, value);
-        }
-
-        public int Price
-        {
-            get => price;
-            set => SetProperty(ref price, value);
         }
 
 
 
-        public DelegateCommand OkCommand { get; }
-        public DelegateCommand CancelCommand { get; }
+        public ReactiveProperty<string> Name { get; }
+        public ReactiveProperty<string> Category { get; }
+        public ReactiveProperty<string> Price { get; }
+
+        public ReactiveCommand OkCommand { get; }
+        public ReactiveCommand CancelCommand { get; }
     }
 }

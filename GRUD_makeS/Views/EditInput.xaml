@@ -12,11 +12,11 @@
     <Grid>
         <StackPanel Margin="10">
             <TextBlock>Name:</TextBlock>
-            <TextBox  Text="{Binding Name,Mode=TwoWay}" ></TextBox>
+            <TextBox  Text="{Binding Name.Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ></TextBox>
             <TextBlock>Category:</TextBlock>
-            <TextBox Text="{Binding Category,Mode=TwoWay}"></TextBox>
+            <TextBox Text="{Binding Category.Value,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <TextBlock>Price:</TextBlock>
-            <TextBox Text="{Binding Price,Mode=TwoWay}"></TextBox>
+            <TextBox Text="{Binding Price.Value,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
                 <Button Width="50" Height = "20"  Margin="10" Command="{Binding OkCommand,Mode=OneTime}" >OK</Button>
             <Button  Width="50" Height = "20" Command="{Binding CancelCommand,Mode=OneTime}" >Cancel</Button>

@@ -14,6 +14,8 @@ namespace GRUD_makeS.ViewModels
 {
     class ProductInfoViewModel : BindableBase
     {
+
+        /* クラスじゃなくてインターフェースでもらいたい。 */
         public ProductInfoViewModel(ProductInfo productInfo)
         {
             this.Id = productInfo.Id;

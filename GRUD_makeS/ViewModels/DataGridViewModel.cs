@@ -18,6 +18,10 @@ namespace GRUD_makeS.ViewModels
         {
             var productInfoDb = ProductInfoDb.Default;
 
+            /* イベントを購読しているが、解除されていない。*/
+            /* reactivePropatyというライブラリを使用するとまとめられる */
+            /* transactionとの関係 */
+
             productInfoDb.AddChaged += (s, e) =>
             {
                 /* lastだとVMがDBを読む方法を知っているのでよくない */
@@ -38,6 +42,7 @@ namespace GRUD_makeS.ViewModels
 
             };
 
+            /* viewmodel同士の参照が発生していてよくない */
             productInfoDb.UpdateChaged += (s, e) =>
             {
                 var updated = e.ProductInfo;
