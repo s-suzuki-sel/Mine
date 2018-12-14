@@ -10,28 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using Microsoft.Win32;
-
-
-
-
 
 namespace GRUD_makeS.Views
 {
     /// <summary>
-    /// MainWindow.xaml の相互作用ロジック
+    /// ImportWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ImportWindow
     {
-        public MainWindow()
+        public ImportWindow()
         {
             InitializeComponent();
-
         }
     }
 }
-     

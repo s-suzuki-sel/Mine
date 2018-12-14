@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace GRUD_makeS.ViewModels
 {
-    class MainWindowViewModel
+    class ImportWindowViewModel
     {
-        public MainWindowViewModel()
+        public ImportWindowViewModel()
         {
             CreateViewModel = new CreateViewModel();
             DataGridViewModel = new DataGridViewModel();
