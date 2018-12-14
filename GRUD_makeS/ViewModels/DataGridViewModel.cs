@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using GRUD_makeS.Models.Data;
-
+using System.Windows.Data;
 
 
 namespace GRUD_makeS.ViewModels
@@ -13,11 +13,13 @@ namespace GRUD_makeS.ViewModels
     class DataGridViewModel
     {
         public ObservableCollection<ProductInfoViewModel> ProductInfoViewModels { get; } = new ObservableCollection<ProductInfoViewModel>();
-
+        
         public DataGridViewModel()
         {
             var productInfoDb = ProductInfoDb.Default;
 
+            BindingOperations.EnableCollectionSynchronization(this.ProductInfoViewModels, new object());
+            
             /* イベントを購読しているが、解除されていない。*/
             /* reactivePropatyというライブラリを使用するとまとめられる */
             /* transactionとの関係 */
@@ -27,7 +29,7 @@ namespace GRUD_makeS.ViewModels
                 /* lastだとVMがDBを読む方法を知っているのでよくない */
                 var added =  e.ProductInfo;
                 var vm = new ProductInfoViewModel(added);
-
+               
                 ProductInfoViewModels.Add(vm);
 
             };
@@ -36,7 +38,7 @@ namespace GRUD_makeS.ViewModels
             {
                 var removed = e.ProductInfo;
                 var removedId = removed.Id;
-                var found = ProductInfoViewModels.First(x => x.Id == removedId);
+                var found = ProductInfoViewModels.First(x => x.Id == removedId);                
                 ProductInfoViewModels.Remove(found);
 
 

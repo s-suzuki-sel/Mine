@@ -20,11 +20,11 @@ namespace GRUD_makeS.ViewModels
             Name = "鈴木";
             Category = "人";
             Price = 100;
-            ClickCommand = new DelegateCommand(() =>
+            ClickCommand = new DelegateCommand(async () =>
             {
 
                 var creation = new Creation();
-                creation.Execute(Name, Category, Price);
+                await creation.Execute(Name, Category, Price);
             });
 
 

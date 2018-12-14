@@ -23,12 +23,20 @@ namespace GRUD_makeS.Models.Data
 
         public IReadOnlyList< ProductInfo>  ProductInfos { get;}
 
-        
         public void Add(ProductInfo productInfo)
         {
             productInfos.Add(productInfo);
             var e = new DbChangedEventArgs(productInfo);
             AddChaged?.Invoke(this, e);
+        }
+
+        public void AddAsync(ProductInfo productInfo)
+        {
+            System.Threading.Thread.Sleep(3000);            
+            productInfos.Add(productInfo);
+            var e = new DbChangedEventArgs(productInfo);
+            AddChaged?.Invoke(this, e);
+            
         }
 
 

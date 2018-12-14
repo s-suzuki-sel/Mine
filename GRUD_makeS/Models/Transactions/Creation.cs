@@ -30,7 +30,7 @@ namespace GRUD_makeS.Models.Transactions
         }
 
 
-        public void Execute(string name,string category ,int price)
+        public async Task Execute(string name,string category ,int price)
         {
             var productinfo = new ProductInfo
             {
@@ -39,7 +39,10 @@ namespace GRUD_makeS.Models.Transactions
                 Price = price
             };
 
-            productInfoDb.Add(productinfo);
+            await Task.Run(() =>
+            {
+                productInfoDb.AddAsync(productinfo);
+            });
 
         }
 
