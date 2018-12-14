@@ -12,7 +12,7 @@ namespace GRUD_makeS.ViewModels
 {
     class CreateViewModel :BindableBase
     {
-        
+
 
 
         public CreateViewModel() 
@@ -22,9 +22,16 @@ namespace GRUD_makeS.ViewModels
             Price = 100;
             ClickCommand = new DelegateCommand(async () =>
             {
-
+                var lordingEventer = new LoadingEventer();
+                /* Lording画面の呼び出し処理 */
+                lordingEventer.Lord(@"C:\Users\shotasuzuki\source\repos\GRUD_makeS\GRUD_makeS\Image\Wait.jpg");
                 var creation = new Creation();
                 await creation.Execute(Name, Category, Price);
+
+
+
+
+
             });
 
 
@@ -57,7 +64,7 @@ namespace GRUD_makeS.ViewModels
 
 
         public DelegateCommand ClickCommand { get; }
-
+            
     }
 
     

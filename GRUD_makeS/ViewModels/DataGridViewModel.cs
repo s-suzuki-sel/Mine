@@ -6,18 +6,21 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using GRUD_makeS.Models.Data;
 using System.Windows.Data;
-
+using System.Reactive;
+using System.Reactive.Linq;
+using Reactive.Bindings.Binding;
+using Reactive.Bindings.Extensions;
+using Reactive.Bindings;
 
 namespace GRUD_makeS.ViewModels
 {
     class DataGridViewModel
-    {
-        public ObservableCollection<ProductInfoViewModel> ProductInfoViewModels { get; } = new ObservableCollection<ProductInfoViewModel>();
-        
+    {   
+        public ReactiveCollection<ProductInfoViewModel> ProductInfoViewModels { get; } = new ReactiveCollection<ProductInfoViewModel>();
         public DataGridViewModel()
         {
             var productInfoDb = ProductInfoDb.Default;
-
+            var lordingEventer = new LoadingEventer();
             BindingOperations.EnableCollectionSynchronization(this.ProductInfoViewModels, new object());
             
             /* イベントを購読しているが、解除されていない。*/
@@ -29,8 +32,12 @@ namespace GRUD_makeS.ViewModels
                 /* lastだとVMがDBを読む方法を知っているのでよくない */
                 var added =  e.ProductInfo;
                 var vm = new ProductInfoViewModel(added);
-               
+
+
+
                 ProductInfoViewModels.Add(vm);
+                /* LordingWindow Close */
+                lordingEventer.Lord(@"C:\Users\shotasuzuki\source\repos\GRUD_makeS\GRUD_makeS\Image\Lording.jpg");
 
             };
 
