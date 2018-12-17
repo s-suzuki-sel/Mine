@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace GRUD_makeS.ViewModels
 {
-    class LoadingEventer 
+    class LordingEventer 
     {
+        /* staticなプロパティでインラインで初期化するとほぼsingletonとなる */
+        public static LordingEventer Default { get; } = new LordingEventer();
+
+        public LordingEventer()
+        {
+
+        }
 
         public void Lord(string imagePath)
         {

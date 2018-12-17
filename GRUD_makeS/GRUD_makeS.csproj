@@ -143,7 +143,7 @@
     <Compile Include="ViewModels\LordChangedEventArgs.cs" />
     <Compile Include="ViewModels\LordingWindowViewModel.cs" />
     <Compile Include="ViewModels\ProductInfoViewModel.cs" />
-    <Compile Include="ViewModels\LoadingEventer.cs" />
+    <Compile Include="ViewModels\LordingEventer.cs" />
     <Compile Include="Views\DataGrid.xaml.cs">
       <DependentUpon>DataGrid.xaml</DependentUpon>
     </Compile>
@@ -228,6 +228,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\Wait.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\lord.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\comp.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

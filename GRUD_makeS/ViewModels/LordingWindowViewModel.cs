@@ -12,9 +12,9 @@ namespace GRUD_makeS.ViewModels
     {
         public LordingWindowViewModel()
         {
-           // Image = @"C:\Users\shotasuzuki\source\repos\GRUD_makeS\GRUD_makeS\Image\Lording.jpg";
+            // Image = @"C:\Users\shotasuzuki\source\repos\GRUD_makeS\GRUD_makeS\Image\Lording.jpg";
 
-            var lordingEventer = new LoadingEventer();
+            var lordingEventer = LordingEventer.Default;
 
 
             lordingEventer.DataLorded += (s, e) =>

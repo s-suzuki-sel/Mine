@@ -20,7 +20,7 @@ namespace GRUD_makeS.ViewModels
         public DataGridViewModel()
         {
             var productInfoDb = ProductInfoDb.Default;
-            var lordingEventer = new LoadingEventer();
+            var lordingEventer =LordingEventer.Default;
             BindingOperations.EnableCollectionSynchronization(this.ProductInfoViewModels, new object());
             
             /* イベントを購読しているが、解除されていない。*/
@@ -37,8 +37,8 @@ namespace GRUD_makeS.ViewModels
 
                 ProductInfoViewModels.Add(vm);
                 /* LordingWindow Close */
-                lordingEventer.Lord(@"C:\Users\shotasuzuki\source\repos\GRUD_makeS\GRUD_makeS\Image\Lording.jpg");
-
+                lordingEventer.Lord(@"C:\Users\shotasuzuki\source\repos\GRUD_makeS\GRUD_makeS\Image\comp.PNG");
+                
             };
 
             productInfoDb.RemoveChaged += (s, e) =>

@@ -22,9 +22,9 @@ namespace GRUD_makeS.ViewModels
             Price = 100;
             ClickCommand = new DelegateCommand(async () =>
             {
-                var lordingEventer = new LoadingEventer();
+                var lordingEventer = LordingEventer.Default;
                 /* Lording画面の呼び出し処理 */
-                lordingEventer.Lord(@"C:\Users\shotasuzuki\source\repos\GRUD_makeS\GRUD_makeS\Image\Wait.jpg");
+                lordingEventer.Lord(@"C:\Users\shotasuzuki\source\repos\GRUD_makeS\GRUD_makeS\Image\lord.PNG");
                 var creation = new Creation();
                 await creation.Execute(Name, Category, Price);
 
