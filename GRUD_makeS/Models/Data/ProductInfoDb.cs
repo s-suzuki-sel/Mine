@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reactive;
+using System.Reactive.Linq;
+using System.Reactive.Subjects;
+using Prism.Mvvm;
+
 
 namespace GRUD_makeS.Models.Data
 {
-    class ProductInfoDb
+    class ProductInfoDb :BindableBase
     {
         /* staticなプロパティでインラインで初期化するとほぼsingletonとなる */
         public static ProductInfoDb Default { get; } = new ProductInfoDb();
@@ -19,6 +24,22 @@ namespace GRUD_makeS.Models.Data
         {
             /* .AsReadOnlyすれば外部からcastでリストがよばれても取り出せなくなる */
             ProductInfos = productInfos.AsReadOnly();
+            
+
+        }
+        public int queue;
+        public int execute;
+
+        public int Queue
+        {
+            get => queue;
+            set => SetProperty(ref queue, value);
+        }
+
+        public int Execute
+        {
+            get => execute;
+            set => SetProperty(ref execute, value);
         }
 
         public IReadOnlyList< ProductInfo>  ProductInfos { get;}
@@ -32,9 +53,14 @@ namespace GRUD_makeS.Models.Data
 
         public void AddAsync(ProductInfo productInfo)
         {
+            Queue++;
+
             System.Threading.Thread.Sleep(3000);            
             productInfos.Add(productInfo);
             var e = new DbChangedEventArgs(productInfo);
+
+            Execute++;
+
             AddChaged?.Invoke(this, e);
             
         }
@@ -88,5 +114,6 @@ namespace GRUD_makeS.Models.Data
         public event EventHandler<DbChangedEventArgs>  RemoveChaged;
 
         public event EventHandler<DbChangedEventArgs> UpdateChaged;
+
     }
 }

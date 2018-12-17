@@ -17,11 +17,12 @@ namespace GRUD_makeS.Views
     /// <summary>
     /// LordingWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class LordingWindow : UserControl
+    public partial class LoadingWindow : UserControl
     {
-        public LordingWindow()
+        public LoadingWindow()
         {
-            InitializeComponent();
+
+           InitializeComponent();
         }
     }
 }

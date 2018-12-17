@@ -20,6 +20,7 @@ namespace GRUD_makeS.Models.Data
         public string Name { get; set; }
         public string Category { get; set; }
         public int Price { get; set; }
+
     }
     
 }

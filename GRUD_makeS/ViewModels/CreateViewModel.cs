@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 using Prism.Mvvm;
 using Prism.Commands;
 using GRUD_makeS.Models.Transactions;
-
+using System.Reactive.Linq;
 
 namespace GRUD_makeS.ViewModels
 {
     class CreateViewModel :BindableBase
     {
-
-
 
         public CreateViewModel() 
         {
@@ -22,15 +20,10 @@ namespace GRUD_makeS.ViewModels
             Price = 100;
             ClickCommand = new DelegateCommand(async () =>
             {
-                var lordingEventer = LordingEventer.Default;
-                /* Lording画面の呼び出し処理 */
-                lordingEventer.Lord(@"C:\Users\shotasuzuki\source\repos\GRUD_makeS\GRUD_makeS\Image\lord.PNG");
+                
+
                 var creation = new Creation();
                 await creation.Execute(Name, Category, Price);
-
-
-
-
 
             });
 
@@ -40,6 +33,8 @@ namespace GRUD_makeS.ViewModels
         private string name;
         private string category;
         private int price;
+
+
         public string Name
         {
             get => name;
@@ -59,7 +54,6 @@ namespace GRUD_makeS.ViewModels
             get => price;
             set => SetProperty(ref price, value);
         }
-
 
 
 

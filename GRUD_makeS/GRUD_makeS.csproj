@@ -133,17 +133,15 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="DataGridModule.cs" />
     <Compile Include="ImportWindowModule.cs" />
-    <Compile Include="LordingWindowModule.cs" />
+    <Compile Include="LoadingWindowModule.cs" />
     <Compile Include="Models\Data\DbChangedEventArgs.cs" />
     <Compile Include="Models\Data\IdProvider.cs" />
     <Compile Include="ViewModels\CreateViewModel.cs" />
     <Compile Include="ViewModels\DataGridViewModel.cs" />
     <Compile Include="ViewModels\EditInputViewModel.cs" />
     <Compile Include="ViewModels\ImportWindowViewModel.cs" />
-    <Compile Include="ViewModels\LordChangedEventArgs.cs" />
-    <Compile Include="ViewModels\LordingWindowViewModel.cs" />
+    <Compile Include="ViewModels\LoadingWindowViewModel.cs" />
     <Compile Include="ViewModels\ProductInfoViewModel.cs" />
-    <Compile Include="ViewModels\LordingEventer.cs" />
     <Compile Include="Views\DataGrid.xaml.cs">
       <DependentUpon>DataGrid.xaml</DependentUpon>
     </Compile>
@@ -163,7 +161,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LordingWindow.xaml">
+    <Page Include="Views\LoadingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -178,8 +176,8 @@
     <Compile Include="Views\ImportWindow.xaml.cs">
       <DependentUpon>ImportWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LordingWindow.xaml.cs">
-      <DependentUpon>LordingWindow.xaml</DependentUpon>
+    <Compile Include="Views\LoadingWindow.xaml.cs">
+      <DependentUpon>LoadingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
@@ -222,9 +220,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Image\Lording.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\Wait.jpg" />

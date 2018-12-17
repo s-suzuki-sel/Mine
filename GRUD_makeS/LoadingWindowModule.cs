@@ -16,7 +16,7 @@ using Prism.Ioc;
 
 namespace GRUD_makeS
 {
-    class LordingWindowModule:IModule
+    class LoadingWindowModule:IModule
     {
         [Dependency]
         public IUnityContainer Container { get; set; }
@@ -30,9 +30,9 @@ namespace GRUD_makeS
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            this.Container.RegisterType<LordingWindowViewModel>(new ContainerControlledLifetimeManager());
-            this.Container.RegisterType<object, LordingWindow>(nameof(LordingWindow));
-            this.RegionManager.RequestNavigate("CenterRegion", nameof(LordingWindow));
+            this.Container.RegisterType<LoadingWindowViewModel>(new ContainerControlledLifetimeManager());
+            this.Container.RegisterType<object, LoadingWindow>(nameof(LoadingWindow));
+            this.RegionManager.RequestNavigate("CenterRegion", nameof(LoadingWindow));
         }
 
     }

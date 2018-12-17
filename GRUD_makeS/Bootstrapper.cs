@@ -34,7 +34,7 @@ namespace GRUD_makeS
             var catalog = (ModuleCatalog)this.ModuleCatalog;
             catalog.AddModule(typeof(ImportWindowModule));
             catalog.AddModule(typeof(DataGridModule));
-            catalog.AddModule(typeof(LordingWindowModule));
+            catalog.AddModule(typeof(LoadingWindowModule));
         }
     }
 
