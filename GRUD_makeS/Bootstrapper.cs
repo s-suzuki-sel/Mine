@@ -13,6 +13,9 @@ namespace GRUD_makeS
 {
     class Bootstrapper : UnityBootstrapper
     {
+        
+        
+
         /* なんか入ってるコンテナ */
         protected override DependencyObject CreateShell()
         {
@@ -29,11 +32,14 @@ namespace GRUD_makeS
 
         protected override void ConfigureContainer()
         {
+            
             base.ConfigureContainer();
 
             var catalog = (ModuleCatalog)this.ModuleCatalog;
             catalog.AddModule(typeof(ImportWindowModule));
             catalog.AddModule(typeof(DataGridModule));
+
+            
             catalog.AddModule(typeof(LoadingWindowModule));
         }
     }

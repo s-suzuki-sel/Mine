@@ -17,6 +17,8 @@ namespace GRUD_makeS.ViewModels
     class DataGridViewModel
     {   
         public ReactiveCollection<ProductInfoViewModel> ProductInfoViewModels { get; } = new ReactiveCollection<ProductInfoViewModel>();
+
+        public ReactiveCollection<ProductInfoViewModel> SearchedProductInfoViewModels { get; } = new ReactiveCollection<ProductInfoViewModel>();
         public DataGridViewModel()
         {
             var productInfoDb = ProductInfoDb.Default;
@@ -32,12 +34,8 @@ namespace GRUD_makeS.ViewModels
                 var added =  e.ProductInfo;
                 var vm = new ProductInfoViewModel(added);
 
-
-
                 ProductInfoViewModels.Add(vm);
                 
-                /* LoadingWindow 完了時イベントを呼ぶ */
-
                 
             };
 
@@ -60,6 +58,16 @@ namespace GRUD_makeS.ViewModels
                 found.Name = updated.Name;
                 found.Category = updated.Category;
                 found.Price = updated.Price;
+
+            };
+
+            productInfoDb.SearchChanged += (s, e) =>
+            {
+                /* lastだとVMがDBを読む方法を知っているのでよくない */
+                var searched = e.ProductInfo;
+                var vm = new ProductInfoViewModel(searched);
+
+                SearchedProductInfoViewModels.Add(vm);
 
             };
 

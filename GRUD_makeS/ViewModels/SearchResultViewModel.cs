@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Prism.Mvvm;
 using Prism.Commands;
+using GRUD_makeS.Models.Transactions;
+using System.Reactive.Linq;
 
 namespace GRUD_makeS.ViewModels
 {
-    class ImportWindowViewModel
+    class SearchResultViewModel 
     {
-        public ImportWindowViewModel()
+        public SearchResultViewModel()
         {
             CreateViewModel = new CreateViewModel();
             DataGridViewModel = new DataGridViewModel();
@@ -18,6 +20,8 @@ namespace GRUD_makeS.ViewModels
 
         public CreateViewModel CreateViewModel { get; }
         public DataGridViewModel DataGridViewModel { get; }
-     
+
+
+
     }
 }

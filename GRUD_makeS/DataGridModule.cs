@@ -34,7 +34,7 @@ namespace GRUD_makeS
             this.Container.RegisterType<DataGridViewModel>(new ContainerControlledLifetimeManager());
             this.Container.RegisterType<object, DataGrid>(nameof(DataGrid));
 
-            this.RegionManager.RequestNavigate("UnderRegion", nameof(DataGrid));
+            this.RegionManager.RequestNavigate("Under1Region", nameof(DataGrid));
         }
     }
 }

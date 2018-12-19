@@ -55,7 +55,7 @@ namespace GRUD_makeS.Models.Data
         {
             Queue++;
 
-            System.Threading.Thread.Sleep(3000);            
+            //System.Threading.Thread.Sleep(3000);            
             productInfos.Add(productInfo);
             var e = new DbChangedEventArgs(productInfo);
 
@@ -108,12 +108,44 @@ namespace GRUD_makeS.Models.Data
             var e = new DbChangedEventArgs(found);
             UpdateChaged?.Invoke(this, e);
         }
+
+        public void Search(string genre, string searchWord)
+        {
+            if(genre == "Name")
+            {
+                var search = productInfos.Find(x => x.Name == searchWord);
+                var e = new DbChangedEventArgs(search);
+                SearchChanged?.Invoke(this, e);
+            }
+
+            if (genre == "Category")
+            {
+                var search = productInfos.Find(x => x.Category == searchWord);
+                var e = new DbChangedEventArgs(search);
+                SearchChanged?.Invoke(this, e);
+            }
+
+            if (genre == "Price")
+            {
+                var search = productInfos.Find(x => x.Price == int.Parse(searchWord));
+                var e = new DbChangedEventArgs(search);
+                SearchChanged?.Invoke(this, e);
+            }
+                     
+
+        }
+
+
+
+
         /* イベントのネーミングルールは時制句を入れる(ed,ing) */
         public event EventHandler<DbChangedEventArgs> AddChaged;
 
         public event EventHandler<DbChangedEventArgs>  RemoveChaged;
 
         public event EventHandler<DbChangedEventArgs> UpdateChaged;
+
+        public event EventHandler<DbChangedEventArgs> SearchChanged;
 
     }
 }

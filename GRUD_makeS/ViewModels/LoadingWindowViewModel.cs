@@ -26,7 +26,6 @@ namespace GRUD_makeS.ViewModels
 
             var productInfoDb = ProductInfoDb.Default;
 
-
             var subject1 = productInfoDb.ObserveProperty(x => x.Queue);
             var subject2 = productInfoDb.ObserveProperty(x => x.Execute);
 
@@ -37,19 +36,21 @@ namespace GRUD_makeS.ViewModels
                 {
                     if (xs[0] != xs[1])
                     {
-                        Image = @"C:\Users\shotasuzuki\source\repos\GRUD_makeS\GRUD_makeS\Image\lord.PNG";
+                        //Image = @"C:\Users\shotasuzuki\source\repos\GRUD_makeS\GRUD_makeS\Image\lord.PNG";                        
+                        Image = @"C:\Users\shotasuzuki\source\repos\GRUD_makeS\GRUD_makeS\Image\lord.PNG";    
                     }
                     else
                     {
-                        Image = "";
+                        Image = "";        
                     }
                     
                 
-                });
-          
-
+                });     
 
         }
+
+
+
 
         public string image;
 
