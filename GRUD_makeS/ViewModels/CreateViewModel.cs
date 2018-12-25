@@ -15,25 +15,35 @@ namespace GRUD_makeS.ViewModels
 
         public CreateViewModel() 
         {
-            Name = "鈴木";
-            Category = "人";
+            Name = "名称";
+            Category = "カテゴリ";
             Price = 100;
+            ButtonText = "Create";
+
             ClickCommand = new DelegateCommand(async () =>
             {
                 
-
                 var creation = new Creation();
                 await creation.Execute(Name, Category, Price);
 
             });
 
+            ClickSearchCommand = new DelegateCommand(() =>
+            {
+                var vm = new SearchViewModel();
+                var Search = new GRUD_makeS.Views.Search();
+                Search.ShowDialog();
+
+
+            });
+            
+
 
         }
-
         private string name;
         private string category;
         private int price;
-
+        private string buttonText;
 
         public string Name
         {
@@ -55,10 +65,19 @@ namespace GRUD_makeS.ViewModels
             set => SetProperty(ref price, value);
         }
 
+        public string ButtonText
+        {
+            get => buttonText;
+            set => SetProperty(ref buttonText, value);
+        }
+
 
 
         public DelegateCommand ClickCommand { get; }
-            
+        public DelegateCommand ClickSearchCommand { get; }
+
+        
+
     }
 
     

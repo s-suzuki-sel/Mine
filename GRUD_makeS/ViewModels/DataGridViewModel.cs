@@ -12,16 +12,18 @@ using Reactive.Bindings.Binding;
 using Reactive.Bindings.Extensions;
 using Reactive.Bindings;
 
+
 namespace GRUD_makeS.ViewModels
 {
-    class DataGridViewModel
+    class DataGridViewModel : IDisposable
     {   
         public ReactiveCollection<ProductInfoViewModel> ProductInfoViewModels { get; } = new ReactiveCollection<ProductInfoViewModel>();
         public DataGridViewModel()
         {
             var productInfoDb = ProductInfoDb.Default;
             BindingOperations.EnableCollectionSynchronization(this.ProductInfoViewModels, new object());
-            
+            //BindingOperations.EnableCollectionSynchronization(this.SearchedProductInfoViewModels, new object());
+
             /* イベントを購読しているが、解除されていない。*/
             /* reactivePropatyというライブラリを使用するとまとめられる */
             /* transactionとの関係 */
@@ -32,12 +34,8 @@ namespace GRUD_makeS.ViewModels
                 var added =  e.ProductInfo;
                 var vm = new ProductInfoViewModel(added);
 
-
-
                 ProductInfoViewModels.Add(vm);
                 
-                /* LoadingWindow 完了時イベントを呼ぶ */
-
                 
             };
 
@@ -62,8 +60,22 @@ namespace GRUD_makeS.ViewModels
                 found.Price = updated.Price;
 
             };
+            /*
+            productInfoDb.SearchChanged += (s, e) =>
+            {
+                SearchedProductInfoViewModels.Clear();
+                var searched = e.ProductInfo;
+                var vm = new ProductInfoViewModel(searched);
+                SearchedProductInfoViewModels.Add(vm);
 
+            };
+            */
 
+        }
+
+        public void Dispose()
+        {
+            // ここでイベントの解除
         }
     }
 }

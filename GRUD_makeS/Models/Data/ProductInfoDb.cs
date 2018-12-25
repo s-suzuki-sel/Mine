@@ -108,12 +108,67 @@ namespace GRUD_makeS.Models.Data
             var e = new DbChangedEventArgs(found);
             UpdateChaged?.Invoke(this, e);
         }
+
+        public void Search(string genre, string searchWord)
+        {
+            Clear.Invoke(this, EventArgs.Empty);
+
+            switch (genre)
+            {
+                case "Name":
+                              
+                        var searchName = productInfos.Where(x => x.Name == searchWord).ToArray();
+
+                        for (int i = 0; i < searchName.Length; i++)
+                        {
+                            var nameElement = searchName.ElementAt(i);
+                            var eName = new DbChangedEventArgs(nameElement);
+                            SearchChanged?.Invoke(this, eName);
+                        }                    
+
+
+                    break;
+
+                case "Category":
+                    var searchCategory = productInfos.Where(x => x.Category == searchWord).ToArray();
+                    for (int i = 0; i< searchCategory.Length; i++)
+                    {
+                        var categoryElement = searchCategory.ElementAt(i);
+                        var eCategory = new DbChangedEventArgs(categoryElement);
+                        SearchChanged?.Invoke(this, eCategory);
+
+                    }
+                    break;
+
+                case "Price":
+                    var searchPrice = productInfos.Where(x => x.Price == int.Parse(searchWord)).ToArray();
+                    for (int i = 0; i < searchPrice.Length; i++)
+                    {
+                        var priceElement = searchPrice.ElementAt(i);
+                        var ePrice = new DbChangedEventArgs(priceElement);
+                        SearchChanged?.Invoke(this, ePrice);
+
+                    }
+                    break;
+            }
+
+
+
+        }
+
+
+
+
         /* イベントのネーミングルールは時制句を入れる(ed,ing) */
         public event EventHandler<DbChangedEventArgs> AddChaged;
 
         public event EventHandler<DbChangedEventArgs>  RemoveChaged;
 
         public event EventHandler<DbChangedEventArgs> UpdateChaged;
+
+        public event EventHandler<DbChangedEventArgs> SearchChanged;
+
+        public event EventHandler<EventArgs> Clear;
 
     }
 }

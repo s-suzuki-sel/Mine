@@ -40,12 +40,15 @@ namespace GRUD_makeS.ViewModels
                 deleteing.Execute(Id);
 
             });
+
+
         }
 
         private string name;
         private string category;
         private int price;
-
+        
+        
         public int Id { get; }
         public string Name
         {

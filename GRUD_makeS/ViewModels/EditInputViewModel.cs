@@ -28,10 +28,7 @@ namespace GRUD_makeS.ViewModels
             Category = new ReactiveProperty<string>(productInfo.Category);
             Price = new ReactiveProperty<string>(productInfo.Price.ToString());
 
-
-
-
-
+            /* ウインドウの情報を入手してる */
             OkCommand = new[]
             {
                 Name.Select(x => !string.IsNullOrEmpty(x)),

@@ -21,7 +21,10 @@
                 <TextBlock>Price:</TextBlock>
                 <TextBox  Text="{Binding Price,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ></TextBox>
                 <TextBlock/>
-                <Button Width="100" Height = "30" HorizontalAlignment="Right" Command="{Binding ClickCommand,Mode=OneTime}" >Create</Button>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Width="100" Height = "30" HorizontalAlignment="Right" Command="{Binding ClickCommand,Mode=OneTime}" Content="{Binding ButtonText,Mode=OneWay}" Margin="10"></Button>
+                    <Button Width="100" Height= "30" HorizontalAlignment="Right" Command="{Binding ClickSearchCommand,Mode=OneTime}" >Search</Button>
+                </StackPanel>
             </StackPanel>
 
         </Border>
