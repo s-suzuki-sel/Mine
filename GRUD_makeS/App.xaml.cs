@@ -5,20 +5,47 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using GRUD_makeS;
+using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Unity;
+using Prism.Unity.Ioc;
+using GRUD_makeS.Views;
 
 namespace GRUD_makeS
 {
     /// <summary>
     /// App.xaml の相互作用ロジック
     /// </summary>
-    public partial class App : Application
+    public partial class App
     {
-        private void Application_Startup(object sender, StartupEventArgs e)
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            // Bootstrapperを起動する
-            new Bootstrapper().Run();
+ 
+        }
 
+        protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
+        {
+            base.ConfigureModuleCatalog(moduleCatalog);
+
+            moduleCatalog.AddModule<ImportWindowModule>();
+            moduleCatalog.AddModule<DataGridModule>();
+            moduleCatalog.AddModule<LoadingWindowModule>();
+            moduleCatalog.AddModule<SearchWindowModele>();
+        }
+
+        protected override Window CreateShell()
+        {
+            return this.Container.Resolve<Shell>();
+        }
+
+        protected override void InitializeModules()
+        {
+            base.InitializeModules();
+        }
+
+        protected override void OnInitialized()
+        {
+            
         }
     }
 }

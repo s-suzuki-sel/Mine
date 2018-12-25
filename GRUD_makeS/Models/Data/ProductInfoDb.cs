@@ -55,7 +55,7 @@ namespace GRUD_makeS.Models.Data
         {
             Queue++;
 
-            //System.Threading.Thread.Sleep(3000);            
+            System.Threading.Thread.Sleep(3000);            
             productInfos.Add(productInfo);
             var e = new DbChangedEventArgs(productInfo);
 

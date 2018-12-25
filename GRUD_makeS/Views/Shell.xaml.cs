@@ -33,6 +33,28 @@ namespace GRUD_makeS.Views
             InitializeComponent();
 
         }
+
+        protected void OnClosed()
+        {
+            var viewModel = this.DataContext as IDisposable;
+            viewModel?.Dispose();
+        }
+    }
+
+    class ShellViewModel : IDisposable
+    {
+        public IDisposable SubViewModel { get; }
+
+        public void Dispose()
+        {
+            this.SubViewModel.Dispose();
+
+            using (var stream = new System.IO.MemoryStream())
+            {
+                // hoge hoge
+                // もしここでエラーが発生しても必ずDispose
+            }
+        }
     }
 }
      

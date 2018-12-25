@@ -19,6 +19,7 @@ namespace GRUD_makeS.ViewModels
 {
     class SearchViewModel :BindableBase
     {
+
         public SearchViewModel()
         {
 
@@ -26,6 +27,8 @@ namespace GRUD_makeS.ViewModels
 
             CombBoxItems = items;           
 
+
+            /* reactiveプロパティが使いたかった */
             OkCommand = new DelegateCommand (() =>
             {
                 if(SearchWord != null)

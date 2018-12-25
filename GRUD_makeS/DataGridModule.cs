@@ -18,23 +18,15 @@ namespace GRUD_makeS
 {
     class DataGridModule :IModule
     {
-
-        [Dependency]
-        public IUnityContainer Container { get; set; }
-        [Dependency]
-        public IRegionManager RegionManager { get; set; }
-
-
         public void OnInitialized(IContainerProvider containerProvider)
         {
+            var regionManager = containerProvider.Resolve<IRegionManager>();
+            regionManager.RegisterViewWithRegion("Under0Region", typeof(DataGrid));
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            this.Container.RegisterType<DataGridViewModel>(new ContainerControlledLifetimeManager());
-            this.Container.RegisterType<object, DataGrid>(nameof(DataGrid));
-
-            this.RegionManager.RequestNavigate("Under0Region", nameof(DataGrid));
+            containerRegistry.RegisterSingleton<DataGridViewModel>();
         }
     }
 }

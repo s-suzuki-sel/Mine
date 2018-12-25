@@ -15,7 +15,7 @@ using Reactive.Bindings;
 
 namespace GRUD_makeS.ViewModels
 {
-    class DataGridViewModel 
+    class DataGridViewModel : IDisposable
     {   
         public ReactiveCollection<ProductInfoViewModel> ProductInfoViewModels { get; } = new ReactiveCollection<ProductInfoViewModel>();
         public DataGridViewModel()
@@ -71,6 +71,11 @@ namespace GRUD_makeS.ViewModels
             };
             */
 
+        }
+
+        public void Dispose()
+        {
+            // ここでイベントの解除
         }
     }
 }
