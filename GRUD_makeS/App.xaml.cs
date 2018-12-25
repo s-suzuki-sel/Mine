@@ -37,7 +37,7 @@ namespace GRUD_makeS
         {
             return this.Container.Resolve<Shell>();
         }
-
+/*
         protected override void InitializeModules()
         {
             base.InitializeModules();
@@ -47,5 +47,7 @@ namespace GRUD_makeS
         {
             
         }
+
+    */
     }
 }
