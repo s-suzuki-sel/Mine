@@ -37,8 +37,9 @@ namespace GRUD_makeS.ViewModels
 
             });
             
-        }
 
+
+        }
         private string name;
         private string category;
         private int price;
@@ -74,6 +75,9 @@ namespace GRUD_makeS.ViewModels
 
         public DelegateCommand ClickCommand { get; }
         public DelegateCommand ClickSearchCommand { get; }
+
+        
+
     }
 
     
