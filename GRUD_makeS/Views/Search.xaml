@@ -11,9 +11,9 @@
     <Grid>
         <StackPanel Margin="10">
             <Label Height="10"></Label>
-            <ComboBox Width="100" Height="25" ItemsSource="{Binding CombBoxItems,Mode=OneTime}" SelectedIndex="{Binding Genre,Mode=OneWay}" ></ComboBox>
+            <ComboBox Width="100" Height="25" ItemsSource="{Binding CombBoxItems,Mode=OneWay}" SelectedIndex="{Binding Genre,Mode=TwoWay}" ></ComboBox>
             <TextBlock Text="検索ワード" Width="100" Height="20" ></TextBlock>
-            <TextBox Width="100" Height="25" DataContext="{Binding SearchWord,Mode=OneWay}"></TextBox>
+            <TextBox Width="100" Height="25" Text="{Binding SearchWord,Mode=TwoWay}"></TextBox>
             
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
                 <Button Width="50" Height = "20"  Margin="10" Command="{Binding OkCommand,Mode=OneTime}" >OK</Button>

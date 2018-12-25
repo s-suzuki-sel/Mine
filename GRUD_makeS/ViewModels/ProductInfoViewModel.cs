@@ -18,7 +18,6 @@ namespace GRUD_makeS.ViewModels
         /* クラスじゃなくてインターフェースでもらいたい。 */
         public ProductInfoViewModel(ProductInfo productInfo)
         {
-            /*何でgetOnlyなのにsetできるのか 外部からじゃないからOKなのかもしれない */
             this.Id = productInfo.Id;
             this.Name = productInfo.Name;
             this.Category = productInfo.Category;

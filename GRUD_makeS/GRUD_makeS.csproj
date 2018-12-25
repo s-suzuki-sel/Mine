@@ -137,6 +137,7 @@
     <Compile Include="Models\Data\DbChangedEventArgs.cs" />
     <Compile Include="Models\Data\IdProvider.cs" />
     <Compile Include="Models\Transactions\Searcion.cs" />
+    <Compile Include="SearchWindowModele.cs" />
     <Compile Include="ViewModels\CreateViewModel.cs" />
     <Compile Include="ViewModels\DataGridViewModel.cs" />
     <Compile Include="ViewModels\EditInputViewModel.cs" />

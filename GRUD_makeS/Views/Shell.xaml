@@ -12,18 +12,27 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="150">
-            </RowDefinition>
+
         </Grid.RowDefinitions>
-
+        <Grid.ColumnDefinitions>
+            
+        </Grid.ColumnDefinitions>
         
-
         <ContentControl Grid.Row="0" prism:RegionManager.RegionName="UpRegion"></ContentControl>
         <ContentControl Grid.Row="1" prism:RegionManager.RegionName="CenterRegion"></ContentControl>
-        <ContentControl Grid.Row="2" prism:RegionManager.RegionName="Under1Region"></ContentControl>
-        <ContentControl Grid.Row="2" prism:RegionManager.RegionName="Under2Region"></ContentControl>
+        <!--<ContentControl Grid.Row="2" prism:RegionManager.RegionName="Under1Region"></ContentControl>-->
+        <Grid            
+            Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
+            <ContentControl Grid.Column="0" prism:RegionManager.RegionName="Under0Region"></ContentControl>
+            <ContentControl Grid.Column="1" prism:RegionManager.RegionName="Under1Region"></ContentControl>
+        </Grid>
     </Grid>
 </Window>

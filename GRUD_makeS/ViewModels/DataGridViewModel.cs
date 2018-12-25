@@ -12,18 +12,19 @@ using Reactive.Bindings.Binding;
 using Reactive.Bindings.Extensions;
 using Reactive.Bindings;
 
+
 namespace GRUD_makeS.ViewModels
 {
-    class DataGridViewModel
+    class DataGridViewModel 
     {   
         public ReactiveCollection<ProductInfoViewModel> ProductInfoViewModels { get; } = new ReactiveCollection<ProductInfoViewModel>();
-
-        public ReactiveCollection<ProductInfoViewModel> SearchedProductInfoViewModels { get; } = new ReactiveCollection<ProductInfoViewModel>();
+        //public ReactiveCollection<ProductInfoViewModel> SearchedProductInfoViewModels { get; } = new ReactiveCollection<ProductInfoViewModel>();
         public DataGridViewModel()
         {
             var productInfoDb = ProductInfoDb.Default;
             BindingOperations.EnableCollectionSynchronization(this.ProductInfoViewModels, new object());
-            
+            //BindingOperations.EnableCollectionSynchronization(this.SearchedProductInfoViewModels, new object());
+
             /* イベントを購読しているが、解除されていない。*/
             /* reactivePropatyというライブラリを使用するとまとめられる */
             /* transactionとの関係 */
@@ -60,17 +61,16 @@ namespace GRUD_makeS.ViewModels
                 found.Price = updated.Price;
 
             };
-
+            /*
             productInfoDb.SearchChanged += (s, e) =>
             {
-                /* lastだとVMがDBを読む方法を知っているのでよくない */
+                SearchedProductInfoViewModels.Clear();
                 var searched = e.ProductInfo;
                 var vm = new ProductInfoViewModel(searched);
-
                 SearchedProductInfoViewModels.Add(vm);
 
             };
-
+            */
 
         }
     }

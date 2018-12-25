@@ -8,31 +8,37 @@
         xmlns:local="clr-namespace:GRUD_makeS.Views"
         mc:Ignorable="d">
     <Grid>
-        <DataGrid x:Name="dataGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" 
+        <StackPanel>
+            <TextBlock TextAlignment="Center" Background="Silver">登録情報</TextBlock>
+            <DataGrid x:Name="dataGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" 
                   ItemsSource="{Binding ProductInfoViewModels,Mode=OneWay}" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding ="{Binding Id,Mode=OneTime}" Header="ID" IsReadOnly="True" ></DataGridTextColumn>
-                <DataGridTextColumn Binding ="{Binding Name,Mode=OneWay}" Header="Name" IsReadOnly="True"></DataGridTextColumn>
-                <DataGridTextColumn Binding ="{Binding Category,Mode=OneWay}" Header="Category" IsReadOnly="True" ></DataGridTextColumn>
-                <DataGridTextColumn Binding ="{Binding Price,Mode=OneWay}" Header="Price" IsReadOnly="True" ></DataGridTextColumn>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding ="{Binding Id,Mode=OneTime}" Header="ID" IsReadOnly="True" ></DataGridTextColumn>
+                    <DataGridTextColumn Binding ="{Binding Name,Mode=OneWay}" Header="Name" IsReadOnly="True"></DataGridTextColumn>
+                    <DataGridTextColumn Binding ="{Binding Category,Mode=OneWay}" Header="Category" IsReadOnly="True" ></DataGridTextColumn>
+                    <DataGridTextColumn Binding ="{Binding Price,Mode=OneWay}" Header="Price" IsReadOnly="True" ></DataGridTextColumn>
 
-                <DataGridTemplateColumn Header="Edit">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Content="Edit" Command="{Binding EditCommand,Mode=OneTime}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Edit">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Edit" Command="{Binding EditCommand,Mode=OneTime}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="Delete">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Content="Delete" Command="{Binding DeleteCommand,Mode=OneTime}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Delete">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete" Command="{Binding DeleteCommand,Mode=OneTime}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
 
-        </DataGrid>
+            </DataGrid>
+
+        </StackPanel>
+       
+
     </Grid>
 </UserControl>

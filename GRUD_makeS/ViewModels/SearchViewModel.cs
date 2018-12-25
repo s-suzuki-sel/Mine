@@ -24,21 +24,20 @@ namespace GRUD_makeS.ViewModels
 
             CombBoxItems = items;
 
-            Genre = "Category";
+           // Genre = "Category";
 
-            OkCommand = new ReactiveCommand();
 
-            OkCommand.Subscribe(() =>
+            /* 取れてない */
+            OkCommand=new DelegateCommand(() =>
             {
-                var Searcing = new Searcion();
-                Searcing.Execute(Genre, searchWord);
+                var searcion = new Searcion();
+                searcion.Execute(items[int.Parse(Genre)], SearchWord);
 
                 this.CancelCommand.Execute();
             });
 
-            CancelCommand = new ReactiveCommand();
 
-            CancelCommand.Subscribe(() =>
+            CancelCommand= new DelegateCommand(() =>
             {
                 /* AppXaml                        thisで自分を所有しているwindowを探せる */
                 var SearchWindow = App.Current.Windows.OfType<Search>().First(x => x.DataContext == this);
@@ -76,8 +75,8 @@ namespace GRUD_makeS.ViewModels
         }
 
 
-        public ReactiveCommand OkCommand { get; }
-        public ReactiveCommand CancelCommand { get; }
+        public DelegateCommand OkCommand { get; }
+        public DelegateCommand CancelCommand { get; }
 
     }
 }

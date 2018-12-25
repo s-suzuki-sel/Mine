@@ -16,9 +16,8 @@ using Prism.Ioc;
 
 namespace GRUD_makeS
 {
-    class DataGridModule :IModule
+    class SearchWindowModele : IModule
     {
-
         [Dependency]
         public IUnityContainer Container { get; set; }
         [Dependency]
@@ -31,10 +30,10 @@ namespace GRUD_makeS
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            this.Container.RegisterType<DataGridViewModel>(new ContainerControlledLifetimeManager());
-            this.Container.RegisterType<object, DataGrid>(nameof(DataGrid));
-
-            this.RegionManager.RequestNavigate("Under0Region", nameof(DataGrid));
+            this.Container.RegisterType<SearchResultViewModel>(new ContainerControlledLifetimeManager());
+            this.Container.RegisterType<object, SearchResult>(nameof(SearchResult));
+            this.RegionManager.RequestNavigate("Under1Region", nameof(SearchResult));
         }
+
     }
 }
