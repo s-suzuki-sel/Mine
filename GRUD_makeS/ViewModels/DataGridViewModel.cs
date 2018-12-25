@@ -18,7 +18,6 @@ namespace GRUD_makeS.ViewModels
     class DataGridViewModel 
     {   
         public ReactiveCollection<ProductInfoViewModel> ProductInfoViewModels { get; } = new ReactiveCollection<ProductInfoViewModel>();
-        //public ReactiveCollection<ProductInfoViewModel> SearchedProductInfoViewModels { get; } = new ReactiveCollection<ProductInfoViewModel>();
         public DataGridViewModel()
         {
             var productInfoDb = ProductInfoDb.Default;

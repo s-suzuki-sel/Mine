@@ -111,27 +111,48 @@ namespace GRUD_makeS.Models.Data
 
         public void Search(string genre, string searchWord)
         {
-            if(genre == "Name")
+            Clear.Invoke(this, EventArgs.Empty);
+
+            switch (genre)
             {
-                var search = productInfos.Find(x => x.Name == searchWord);
-                var e = new DbChangedEventArgs(search);
-                SearchChanged?.Invoke(this, e);
+                case "Name":
+                              
+                        var searchName = productInfos.Where(x => x.Name == searchWord).ToArray();
+
+                        for (int i = 0; i < searchName.Length; i++)
+                        {
+                            var nameElement = searchName.ElementAt(i);
+                            var eName = new DbChangedEventArgs(nameElement);
+                            SearchChanged?.Invoke(this, eName);
+                        }                    
+
+
+                    break;
+
+                case "Category":
+                    var searchCategory = productInfos.Where(x => x.Category == searchWord).ToArray();
+                    for (int i = 0; i< searchCategory.Length; i++)
+                    {
+                        var categoryElement = searchCategory.ElementAt(i);
+                        var eCategory = new DbChangedEventArgs(categoryElement);
+                        SearchChanged?.Invoke(this, eCategory);
+
+                    }
+                    break;
+
+                case "Price":
+                    var searchPrice = productInfos.Where(x => x.Price == int.Parse(searchWord)).ToArray();
+                    for (int i = 0; i < searchPrice.Length; i++)
+                    {
+                        var priceElement = searchPrice.ElementAt(i);
+                        var ePrice = new DbChangedEventArgs(priceElement);
+                        SearchChanged?.Invoke(this, ePrice);
+
+                    }
+                    break;
             }
 
-            if (genre == "Category")
-            {
-                var search = productInfos.Find(x => x.Category == searchWord);
-                var e = new DbChangedEventArgs(search);
-                SearchChanged?.Invoke(this, e);
-            }
 
-            if (genre == "Price")
-            {
-                var search = productInfos.Find(x => x.Price == int.Parse(searchWord));
-                var e = new DbChangedEventArgs(search);
-                SearchChanged?.Invoke(this, e);
-            }
-                     
 
         }
 
@@ -146,6 +167,8 @@ namespace GRUD_makeS.Models.Data
         public event EventHandler<DbChangedEventArgs> UpdateChaged;
 
         public event EventHandler<DbChangedEventArgs> SearchChanged;
+
+        public event EventHandler<EventArgs> Clear;
 
     }
 }

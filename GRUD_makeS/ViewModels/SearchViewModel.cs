@@ -14,26 +14,30 @@ using GRUD_makeS.Models.Data;
 using GRUD_makeS.Models.Transactions;
 using GRUD_makeS.Views;
 
+
 namespace GRUD_makeS.ViewModels
 {
     class SearchViewModel :BindableBase
     {
         public SearchViewModel()
         {
-            string[] items =  { "Name", "Category", "Price" };
 
-            CombBoxItems = items;
+            string[] items = { "Name", "Category", "Price" };
 
-           // Genre = "Category";
+            CombBoxItems = items;           
 
-
-            /* 取れてない */
-            OkCommand=new DelegateCommand(() =>
+            OkCommand = new DelegateCommand (() =>
             {
-                var searcion = new Searcion();
-                searcion.Execute(items[int.Parse(Genre)], SearchWord);
+                if(SearchWord != null)
+                {
+                    var searcion = new Searcion();
+                    searcion.Execute(items[int.Parse(Genre)], SearchWord);
 
-                this.CancelCommand.Execute();
+                    this.CancelCommand.Execute();
+
+                }
+
+                
             });
 
 
@@ -77,6 +81,11 @@ namespace GRUD_makeS.ViewModels
 
         public DelegateCommand OkCommand { get; }
         public DelegateCommand CancelCommand { get; }
+
+
+
+
+        
 
     }
 }

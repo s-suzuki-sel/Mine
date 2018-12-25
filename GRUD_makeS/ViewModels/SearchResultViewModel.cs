@@ -13,6 +13,7 @@ namespace GRUD_makeS.ViewModels
 {
     class SearchResultViewModel 
     {
+
         public ReactiveCollection<ProductInfoViewModel> SearchedProductInfoViewModels { get; } = new ReactiveCollection<ProductInfoViewModel>();
 
         public SearchResultViewModel()
@@ -21,13 +22,21 @@ namespace GRUD_makeS.ViewModels
 
             productInfoDb.SearchChanged += (s, e) =>
             {
-                SearchedProductInfoViewModels.Clear();
+
                 var searched = e.ProductInfo;
                 var vm = new ProductInfoViewModel(searched);
                 SearchedProductInfoViewModels.Add(vm);
 
+
+
+
             };
 
+            productInfoDb.Clear += (s, e) => 
+            {
+                SearchedProductInfoViewModels.Clear();
+
+            };
 
         }
 
